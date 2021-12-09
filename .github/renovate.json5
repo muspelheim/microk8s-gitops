@@ -1,0 +1,115 @@
+{
+  "enabled": true,
+  "timezone": "Europe/Minsk",
+  "semanticCommits": "enabled",
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "Renovate Dashboard",
+  "commitBody": "Signed-off-by: Yauheni <muspelheim@users.noreply.github.com>",
+  // Do not notify on closed unmerged PRs
+  "suppressNotifications": ["prIgnoreNotification"],
+  // Do not rebase PRs
+  "rebaseWhen": "conflicted",
+  "commitMessageTopic": "{{depName}}",
+  "commitMessageExtra": "to {{newVersion}}",
+  "commitMessageSuffix": "",
+  "helm-values": {
+    "fileMatch": ["./.+\\.yaml$"]
+  },
+  "kubernetes": {
+    "fileMatch": ["\\.yaml$"],
+    "ignorePaths": [
+      "flux-system/",
+      ".github"
+    ],
+  },
+  "regexManagers": [
+    {
+      "fileMatch": ["./.+\\.yaml$"],
+      "matchStrings": [
+        "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n"
+      ],
+      "datasourceTemplate": "helm"
+    },
+    // Generic Flux Regex Manager
+    {
+      "fileMatch": [
+        "home/.+\\.yaml$",
+      ],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( registryUrl=(?<registryUrl>.*?))?( versioning=(?<versioning>.*=?))?\n *tag: (?<currentValue>.*=?)"
+      ],
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",
+      "registryUrlTemplate": "{{#if registryUrl}}{{{registryUrl}}}{{else}}{{/if}}"
+    }
+  ],
+  "packageRules": [
+    // Setup datasources
+    {
+      "datasources": ["helm"],
+      "commitMessageTopic": "Helm chart {{depName}}",
+      "semanticCommitScope": "charts",
+      "separateMinorPatch": true,
+      "ignoreDeprecated": true
+    },
+    {
+      "datasources": ["docker"],
+      "commitMessageTopic": "Docker image {{depName}}",
+      "commitMessageExtra": "to {{#if isSingleVersion}}{{{toVersion}}}{{else}}{{{newValue}}}{{/if}}",
+      "updateTypes": ["major", "minor", "patch"],
+      "enabled": true
+    },
+    {
+      "matchDatasources": ["docker"],
+      "semanticCommitScope": "images",
+      "separateMinorPatch": true
+    },
+    // add labels according to package and update types
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["major"],
+      "commitMessagePrefix": "feat(images)!: ",
+      "labels": ["renovate/image", "dep/major"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["minor"],
+      "semanticCommitType": "feat",
+      "labels": ["renovate/image", "dep/minor"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["patch"],
+      "semanticCommitType": "fix",
+      "labels": ["renovate/image", "dep/patch"]
+    },
+    {
+      "matchDatasources": ["helm"],
+      "matchUpdateTypes": ["major"],
+      "commitMessagePrefix": "feat(charts)!: ",
+      "labels": ["renovate/helm", "dep/major"]
+    },
+    {
+      "matchDatasources": ["helm"],
+      "matchUpdateTypes": ["minor"],
+      "semanticCommitType": "feat",
+      "labels": ["renovate/helm", "dep/minor"]
+    },
+    {
+      "matchDatasources": ["helm"],
+      "matchUpdateTypes": ["patch"],
+      "semanticCommitType": "fix",
+      "labels": ["renovate/helm", "dep/patch"]
+    },
+    // auto-updates
+    {
+      "datasources": ["docker"],
+      "automerge": true,
+      "requiredStatusChecks": null,
+      "schedule": "after 1am and before 5am",
+      "updateTypes": ["minor", "patch"],
+      "packageNames": [
+        "homeassistant/home-assistant"
+      ]
+    }
+  ]
+}

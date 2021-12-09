@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: cluster-settings
+    namespace: flux-system
+data:
+    METALLB_LB_RANGE: ENC[AES256_GCM,data:sYzQb7mbF73UvFVm9LN7Fmz1Pm/IlBpnN5CF,iv:NCdsX5hJlywlndqJXbH1YcWv6rrhV672EBpnhpGhCjM=,tag:Q10s0qyJXvuJJwmB+zpo1A==,type:str]
+    METALLB_TRAEFIK_ADDR: ENC[AES256_GCM,data:UqBUw0FsRdiwg+2jlw==,iv:MZsJL76COsNJ748AkWTvEFEzlWc15JLUpILSJGwWdPo=,tag:tey/Kj5AOBQUb1IX0zoh8Q==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2021-12-19T02:15:57Z"
+    mac: ENC[AES256_GCM,data:jxdvuRL9Bm6YGg1em4yZONDdr7aKWq58W62AFU7YbOB53T6tx/wTKUKUp1yU6YuciF5GLOpQlkw0wIrQKkO07krhTqBxi9iMPiR7ckkHq617HEG1ct2wUPvlp8A8brxz9PaLzlQgc02m2oz7wAR2Ds1Yb80XOv/FpYE1QfrlutI=,iv:HGUxxvsHE0BUhzv4xTc7oj7w8SrLo1Fwo7+n4JrAMkE=,tag:ZduiRCk5pdfZ8y+5M+Nfew==,type:str]
+    pgp:
+        - created_at: "2021-12-19T02:15:57Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQIMAwKPZcbHKm2iAQ//RaqoDZR3vRgADgBPRXchoqXmtyKPR27B6VB5Dzjuf7P1
+            biDcu1QZSHNEzrCl8HOA/784zseJTpzz963m31Q+gOgE5g8TsGHuBf2s9V66gnmI
+            1DcXxWVKB4CtJE98fP0AO+4Lp8yRxBTVplRlujTqRr94pI00f/CD9Smc/6zz96fO
+            zmQG0c+wn+XPpUifHDV6Z3fapp0t09Rlr2sbcT3F8gBHtCdOpGcsHtEmGPZZNplf
+            egA25NrT8jbzXAAqJd5kXhq7WNSzWHgzqlEk7gWTr6TMxXkEyAhDMIg1ETHOgg/n
+            6HZ6A9050fVAcHY4ZWI+splLcVG39gE2Ub3kQALVqmbcCMSyNEGT5VzzVJdzlGde
+            BM7bBX0zEMIQv4Y7WkefSatCly3P/i5vTJudZPnQBP1v1CKCFlrwIxZhuC/GqzxC
+            olkLa4hgtnj3Z5K+1zei2EU9xhAY6VaiDRElJj26LiD6ttlyB4cneA1ErBvk5uY6
+            ldaAbRLQBRcbRNGyWePQR+fIpE2hXoh+UZxXyvpXCK/GciYxoijrfk4QJFFgprC+
+            oZqZrOfGxyox3AzArvzkhyhfjHO01dpP9zObJUAJCIYssV0vLDCDHnG51N6ua9r1
+            wxB1kjyb2hCN8Tri7PGIQHgGC8ge9+ZWxUmVDylHadZKAiCcqB48gLFPxc5FukHS
+            XgHDykARgxim7vTyzhUaXHPGycLES/Cr8NTQjk0K2mdotuqMycoKr+cSw3Hiq/Up
+            fbIYftILqCYBa3Okyj6L7XAtvTj0L+WAzlHiJUSxNOtaW4IfbE8QYldqqeCy4y0=
+            =mph6
+            -----END PGP MESSAGE-----
+          fp: 1EB49F4A2588BBFBBCCA28B87DAE506C2FB93A3D
+    encrypted_regex: ^(data|stringData)$
+    version: 3.7.1

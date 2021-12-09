@@ -1,0 +1,70 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: home-assistant
+  namespace: home
+spec:
+  interval: 60m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: home-assistant
+      version: 11.2.1
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 60m
+  values:
+    image:
+      repository: homeassistant/home-assistant
+      tag: 2021.12.3
+    env:
+      TZ: "Europe/Minsk"
+    envFrom:
+      - secretRef:
+          name: home-assistant-env
+    hostNetwork: true
+    dnsPolicy: ClusterFirstWithHostNet
+    persistence:
+      config:
+        enabled: true
+        existingClaim: home-assistant-pvc
+        mountPath: /config
+    mariadb:
+      enabled: TRUE
+      architecture: standalone
+      auth:
+        database: hassio
+        username: hassio
+        #TODO: Move to secrets
+        password: ${HASS_DB_PASSWORD}
+        rootPassword: ${HASS_DB_ROOT_PASSWORD}
+      primary:
+        persistence:
+          enabled: true
+          existingClaim: hassdb-pvc
+    ingress:
+      main:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: "nginx"
+        hosts:
+        - host: ha.${SECRET_DOMAIN}
+          paths:
+          - path: /
+            pathType: Prefix
+        tls:
+        - hosts:
+          - "ha.${SECRET_DOMAIN}"
+    prometheus:
+      serviceMonitor:
+        enabled: false
+    probes:
+      liveness:
+        enabled: false
+      readiness:
+        enabled: false
+      startup:
+        enabled: false

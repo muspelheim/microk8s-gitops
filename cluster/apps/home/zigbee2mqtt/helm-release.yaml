@@ -1,0 +1,63 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: zigbee2mqtt
+  namespace: home
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: zigbee2mqtt
+      version: 9.1.0
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: ghcr.io/koenkk/zigbee2mqtt
+      tag: 1.22.1
+    env:
+      TZ: "Europe/Minsk"
+      ZIGBEE2MQTT_DATA: /data
+      ZIGBEE2MQTT_CONFIG_MQTT_BASE_TOPIC: zigbee2mqtt
+      ZIGBEE2MQTT_CONFIG_MQTT_SERVER: mqtt://mosquitto
+      ZIGBEE2MQTT_CONFIG_SERIAL_PORT: /dev/ttyACM0
+      ZIGBEE2MQTT_CONFIG_HOMEASSISTANT: true
+      ZIGBEE2MQTT_CONFIG_PERMIT_JOIN: false
+      ZIGBEE2MQTT_CONFIG_FRONTEND_PORT: 8081
+      ZIGBEE2MQTT_CONFIG_EXPERIMENTAL_NEW_API: true
+      ZIGBEE2MQTT_CONFIG_advanced_last_seen: ISO_8601
+      ZIGBEE2MQTT_CONFIG_advanced_rtscts: false
+      ZIGBEE2MQTT_CONFIG_advanced_baudrate: 115200
+
+    securityContext:
+      privileged: true
+
+    additionalVolumeMounts:
+      - name: usb
+        mountPath: /dev/ttyACM0
+    additionalVolumes:
+      - name: usb
+        hostPath:
+          path: /dev/ttyACM0
+
+    ingress:
+      main:
+        enabled: false
+    persistence:
+      config:
+        enabled: true
+        existingClaim: zigbee2mqtt-pvc
+        mountPath: /data
+
+    probes:
+      liveness:
+        enabled: false
+      readiness:
+        enabled: false
+      startup:
+        enabled: false

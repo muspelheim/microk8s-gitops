@@ -1,0 +1,5 @@
+.env
+*.decrypted.*
+secrets.yaml
+setup/
+data/
