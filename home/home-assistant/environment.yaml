@@ -3,6 +3,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: home-assistant-env
+  namespace: home
 stringData:
   HASS_HOME_LATITUDE: 67867
   HASS_HOME_LONGITUDE: 4545

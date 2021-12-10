@@ -1,9 +1,0 @@
-# yamllint disable
-apiVersion: v1
-kind: Secret
-metadata:
-  name: home-assistant-env
-stringData:
-  HASS_HOME_LATITUDE: 67867
-  HASS_HOME_LONGITUDE: 4545
-  HASS_HOME_ELEVATION: 1234
