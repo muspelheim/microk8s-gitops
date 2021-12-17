@@ -1,0 +1,112 @@
+homeassistant: true
+permit_join: false
+mqtt:
+  base_topic: zigbee2mqtt
+  server: mqtt://192.168.0.170
+  user: hassio
+  password: RrXkwcmRAxx5pWYZnYXr7P83
+serial:
+  port: /dev/ttyACM0
+devices:
+  '0x60a423fffe94f5dd':
+    friendly_name: Кухня, свет над столом
+  '0x60a423fffeab5d53':
+    friendly_name: Вход Лампа
+  '0x60a423fffe94f8f5':
+    friendly_name: Коридор Споты
+  '0x60a423fffea3b006':
+    friendly_name: Туалет и кладовая
+  '0x60a423fffea3af1e':
+    friendly_name: Кабинет
+  '0x00124b0021f28ded':
+    friendly_name: Контроллер ленты ЗАЛ
+  '0x00158d00030216b5':
+    friendly_name: Движение - Спальня
+  '0x60a423fffe94f8e8':
+    friendly_name: Балкон свет
+  '0x60a423fffea3a485':
+    friendly_name: Спальня
+  '0x60a423fffeab5aab':
+    friendly_name: Спальня свет
+  '0x00158d00025e90ec':
+    friendly_name: Балкон кабинета температура
+  '0x00158d000302927a':
+    friendly_name: Движение - Кабинет
+  '0x00158d0001a7ec81':
+    friendly_name: Балкон спальня температура
+  '0x00158d0004849c4b':
+    friendly_name: Кабинет AQARA 2 кнопки
+  '0x00158d0002a31719':
+    friendly_name: Детектор дыма зал
+  '0x00158d0001a9399f':
+    friendly_name: Датчик дыма кабинет
+  '0x00158d0002b76893':
+    friendly_name: Датчик Вибрации 1
+  '0x00158d0001235d02':
+    friendly_name: Датчик движения - Душевая
+  '0x00158d00015486df':
+    friendly_name: Датчик движения - Туалет
+  '0x00158d00056e4f7b':
+    friendly_name: Температура - Влажность - туалет
+  '0x60a423fffe93c710':
+    friendly_name: Свет Душевой
+  '0x60a423fffeab4dc5':
+    friendly_name: Гардероб на входе
+  '0x60a423fffea3acd5':
+    friendly_name: Освещение Гостиная
+  '0x60a423fffe94f569':
+    friendly_name: Кухня свет возле мойки
+  '0x60a423fffea0fda3':
+    friendly_name: Спот над рабочим местом
+  '0x00158d00045aa8d1':
+    friendly_name: Выключатель Кухня мойка
+  '0x00158d0001d78ab3':
+    friendly_name: water_sensor_shower_1
+  '0x00158d0002251217':
+    friendly_name: Входная Дверь
+  '0x00158d00022791d5':
+    friendly_name: Вход Спальня
+  '0x00158d000149aa71':
+    friendly_name: Вход туалет
+  '0x00158d0002b71c32':
+    friendly_name: Датчик Вибрации 2
+  '0x00158d0002a31c7d':
+    friendly_name: Детектор дыма коридор
+  '0x00158d0001107ca6':
+    friendly_name: HyperCube
+  '0x00158d00056e4999':
+    friendly_name: Температура - Влажность - душевая
+  '0x00158d00056e4998':
+    friendly_name: Температура - Влажность - Кабинет Стол
+  '0x00158d0005890591':
+    friendly_name: Температура - Влажность - Гостинная подоконник
+  '0x00158d0001d545a3':
+    friendly_name: water_sensor_kitchen_1
+  '0x00158d0006c50da9':
+    friendly_name: хозблок - датчик утечки воды
+  '0x00158d0006c50dff':
+    friendly_name: туалет - стояк - датчик протечки
+  '0x00158d0000f21234':
+    friendly_name: exit_button
+  '0x00158d0000f212d1':
+    friendly_name: zvonok
+  '0x00158d00019d3038':
+    friendly_name: Спальня - температура
+  '0x00158d0002c7c315':
+    friendly_name: Хозблок температура
+  '0x00158d00025e9069':
+    friendly_name: Гардероб - температура
+  '0x00158d0002f3bc07':
+    friendly_name: Движение - Гардероб в спальне
+  '0x00158d000121abf7':
+    friendly_name: Движение - прихожая
+  '0x00158d00040e3c8b':
+    friendly_name: '0x00158d00040e3c8b'
+frontend:
+  port: 8124
+experimental:
+  new_api: true
+advanced:
+  last_seen: ISO_8601
+  rtscts: false
+  baudrate: 115200

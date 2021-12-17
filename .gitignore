@@ -2,3 +2,4 @@
 *.decrypted.*
 secrets.yaml
 bin/
+data/

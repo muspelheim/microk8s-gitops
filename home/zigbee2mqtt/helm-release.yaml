@@ -22,7 +22,7 @@ spec:
       repository: ghcr.io/koenkk/zigbee2mqtt
       tag: 1.22.1
     env:
-      TZ: "America/New_York"
+      TZ: "Europe/Minsk"
       ZIGBEE2MQTT_DATA: /data
     ingress:
       main:
@@ -33,19 +33,19 @@ spec:
         existingClaim: zigbee2mqtt-pvc
         mountPath: /data
 
-    config:
-      mqtt:
-        base_topic: zigbee2mqtt
-        server: "mqtt://192.168.0.170"
-        user: ${TEST_SECRET}
-        password: ${TEST_SECRET}
-      homeassistant: true
-      device_options:
-        retain: true
-      permit_join: false
-      advanced:
-        pan_id: 6754
-      frontend:
-        port: 8080
-      expirimental:
-        new_api: true
+#    config:
+#      mqtt:
+#        base_topic: zigbee2mqtt
+#        server: "mqtt://192.168.0.170"
+#        user: ${TEST_SECRET}
+#        password: ${TEST_SECRET}
+#      homeassistant: true
+#      device_options:
+#        retain: true
+#      permit_join: false
+#      advanced:
+#        pan_id: 6754
+#      frontend:
+#        port: 8080
+#      expirimental:
+#        new_api: true
