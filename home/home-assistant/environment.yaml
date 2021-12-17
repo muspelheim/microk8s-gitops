@@ -6,5 +6,3 @@ metadata:
   namespace: home
 stringData:
   HASS_HOME_LATITUDE: "${SECRET_DOMAIN}"
-  HASS_HOME_LONGITUDE: "4545"
-  HASS_HOME_ELEVATION: "1234"

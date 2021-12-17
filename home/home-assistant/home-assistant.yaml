@@ -43,7 +43,7 @@ spec:
       primary:
         persistence:
           enabled: true
-          storageClass: "hassdb-storageclass"
+          existingClaim: hassdb-pvc
 #    service:
 #      main:
 #        type: LoadBalancer
