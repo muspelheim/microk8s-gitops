@@ -32,25 +32,37 @@ spec:
         enabled: true
         existingClaim: home-assistant-pvc
         mountPath: /config
-    service:
-      main:
-        type: LoadBalancer
-        ports:
-          http:
-            port: 8124
+    mariadb:
+      enabled: TRUE
+      architecture: standalone
+      auth:
+        database: hassio
+        username: hassio
+        password: ${HASS_DB_PASSWORD}
+        rootPassword: ${HASS_DB_ROOT_PASSWORD}
+      primary:
+        persistence:
+          enabled: true
+          storageClass: "hassdb-storageclass"
+#    service:
+#      main:
+#        type: LoadBalancer
+#        ports:
+#          http:
+#            port: 8124
     ingress:
       main:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: "nginx"
         hosts:
-        - host: ha.test.com
+        - host: ha.${SECRET_DOMAIN}
           paths:
           - path: /
             pathType: Prefix
         tls:
         - hosts:
-          - "ha.test.com"
+          - "ha.${SECRET_DOMAIN}"
     prometheus:
       serviceMonitor:
         enabled: false

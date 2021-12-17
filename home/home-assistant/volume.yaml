@@ -24,3 +24,30 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: "/home/samedi/microk8s-gitops/data/home-assistant"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hassdb-pvc
+spec:
+  storageClassName: hassdb-storageclass
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: hassdb-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: hassdb-storageclass
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/home/samedi/microk8s-gitops/data/hassdb"
