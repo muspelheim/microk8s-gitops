@@ -31,7 +31,7 @@ spec:
       config:
         enabled: true
         existingClaim: home-assistant-pvc
-        mountPath: /data
+        mountPath: /config
     service:
       main:
         type: LoadBalancer
