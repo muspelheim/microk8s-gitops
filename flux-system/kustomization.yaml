@@ -4,8 +4,3 @@ resources:
 - gotk-components.yaml
 - gotk-sync.yaml
 - cluster-secret.yaml
-secretGenerator:
-  - name: config-test
-    namespace: flux-system
-    files:
-      - cluster-secret.yaml
