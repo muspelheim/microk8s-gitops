@@ -5,4 +5,4 @@ metadata:
   name: home-assistant-env
   namespace: home
 stringData:
-  HASS_HOME_LATITUDE: "${SECRET_DOMAIN}"
+  HASS_DB_URL: "mysql://root:${HASS_DB_ROOT_PASSWORD}@home-assistant-mariadb/hassio?charset=utf8mb4"
