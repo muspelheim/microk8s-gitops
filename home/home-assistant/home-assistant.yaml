@@ -27,6 +27,11 @@ spec:
           name: home-assistant-env
     hostNetwork: true
     dnsPolicy: ClusterFirstWithHostNet
+    persistence:
+      config:
+        enabled: true
+        existingClaim: task-pv-volume
+        mountPath: /data
     service:
       main:
         type: LoadBalancer
