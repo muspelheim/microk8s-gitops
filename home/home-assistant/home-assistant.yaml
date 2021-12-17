@@ -30,7 +30,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: task-pv-volume
+        existingClaim: home-assistant-pvc
         mountPath: /data
     service:
       main:
