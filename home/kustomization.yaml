@@ -3,4 +3,5 @@ kind: Kustomization
 namespace: home
 resources:
   - home-assistant
+  - zigbee2mqtt
   - namespace.yaml
