@@ -7,4 +7,4 @@ secretGenerator:
   - name: config-test
     namespace: flux-system
     files:
-      - cluster-secret.yaml=cluster-secret.yaml
+      - cluster-secret.yaml
