@@ -6,4 +6,4 @@ resources:
 secretGenerator:
   - name: config
     files:
-      - cluster-secret.yaml=cluster-secret.yaml
+      - cluster-secret.decrypted.yaml
