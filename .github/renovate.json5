@@ -1,0 +1,97 @@
+{
+  "enabled": true,
+  "timezone": "Europe/Minsk",
+  "semanticCommits": "enabled",
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "suppressNotifications": ["prIgnoreNotification"],
+  "rebaseWhen": "conflicted",
+  "commitMessageTopic": "{{depName}}",
+  "commitMessageExtra": "to {{newVersion}}",
+  "commitMessageSuffix": "",
+  "kubernetes": {
+    "fileMatch": [
+      "home/.+\\.yaml$",
+      "flux-system/.+\\.yaml$"
+    ],
+  },
+  "regexManagers": [
+    // regexManager to read and process HelmRelease files
+    {
+      "fileMatch": [
+        "home/.+\\.yaml$"
+      ],
+      "matchStrings": [
+        // helm releases
+        "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n"
+      ],
+      "datasourceTemplate": "helm"
+    },
+    {
+      "fileMatch": [
+        "flux-system/.+\\.yaml$"
+      ],
+      "matchStrings": [
+        // helm releases
+        "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n"
+      ],
+      "datasourceTemplate": "helm"
+    }
+  ],
+  "packageRules": [
+    // setup datasources
+    {
+      "matchDatasources": ["helm"],
+      "semanticCommitScope": "charts",
+      "separateMinorPatch": true,
+      "ignoreDeprecated": true
+    },
+    {
+      "matchDatasources": ["docker"],
+      "enabled": true,
+      "matchUpdateTypes": ["major", "minor", "patch"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "semanticCommitScope": "images",
+      "separateMinorPatch": true
+    },
+    // add labels according to package and update types
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["major"],
+      "commitMessagePrefix": "feat(images)!: ",
+      "labels": ["renovate/image", "dep/major"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["minor"],
+      "semanticCommitType": "feat",
+      "labels": ["renovate/image", "dep/minor"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["patch"],
+      "semanticCommitType": "fix",
+      "labels": ["renovate/image", "dep/patch"]
+    },
+    {
+      "matchDatasources": ["helm"],
+      "matchUpdateTypes": ["major"],
+      "commitMessagePrefix": "feat(charts)!: ",
+      "labels": ["renovate/helm", "dep/major"]
+    },
+    {
+      "matchDatasources": ["helm"],
+      "matchUpdateTypes": ["minor"],
+      "semanticCommitType": "feat",
+      "labels": ["renovate/helm", "dep/minor"]
+    },
+    {
+      "matchDatasources": ["helm"],
+      "matchUpdateTypes": ["patch"],
+      "semanticCommitType": "fix",
+      "labels": ["renovate/helm", "dep/patch"]
+    }
+  ]
+}
