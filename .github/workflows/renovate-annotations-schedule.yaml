@@ -19,7 +19,12 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: renovate-annotations
           delete-branch: true
-          title: "chore(deps): update renovate annotations"
+          title: "Update renovate annotations"
+          signoff: true
+          committer: "Yauheni <muspelheim@users.noreply.github.com>"
+          author: "Yauheni <muspelheim@users.noreply.github.com>"
+          assignees: "muspelheim"
+          commit-message: "Update renovate annotations"
           body: |
             Update Helm Releases in order for Renovate to pick up new versions of Helm charts
           labels: renovate/annotations
