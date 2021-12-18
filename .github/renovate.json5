@@ -3,53 +3,49 @@
   "timezone": "Europe/Minsk",
   "semanticCommits": "enabled",
   "dependencyDashboard": true,
-  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "dependencyDashboardTitle": "Renovate Dashboard",
+  "commitBody": "Signed-off-by: Yauheni <muspelheim@users.noreply.github.com>",
+  // Do not notify on closed unmerged PRs
   "suppressNotifications": ["prIgnoreNotification"],
+  // Do not rebase PRs
   "rebaseWhen": "conflicted",
   "commitMessageTopic": "{{depName}}",
   "commitMessageExtra": "to {{newVersion}}",
   "commitMessageSuffix": "",
+  "helm-values": {
+    "fileMatch": ["./.+\\.yaml$"]
+  },
   "kubernetes": {
-    "fileMatch": [
-      "home/.+\\.yaml$",
-      "flux-system/.+\\.yaml$"
+    "fileMatch": ["\\.yaml$"],
+    "ignorePaths": [
+      "flux-system/",
+      ".github"
     ],
   },
   "regexManagers": [
-    // regexManager to read and process HelmRelease files
     {
-      "fileMatch": [
-        "home/.+\\.yaml$"
-      ],
+      "fileMatch": ["./.+\\.yaml$"],
       "matchStrings": [
-        // helm releases
-        "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n"
-      ],
-      "datasourceTemplate": "helm"
-    },
-    {
-      "fileMatch": [
-        "flux-system/.+\\.yaml$"
-      ],
-      "matchStrings": [
-        // helm releases
         "registryUrl=(?<registryUrl>.*?)\n *chart: (?<depName>.*?)\n *version: (?<currentValue>.*)\n"
       ],
       "datasourceTemplate": "helm"
     }
   ],
   "packageRules": [
-    // setup datasources
+    // Setup datasources
     {
-      "matchDatasources": ["helm"],
+      "datasources": ["helm"],
+      "commitMessageTopic": "Helm chart {{depName}}",
       "semanticCommitScope": "charts",
       "separateMinorPatch": true,
       "ignoreDeprecated": true
     },
     {
-      "matchDatasources": ["docker"],
-      "enabled": true,
-      "matchUpdateTypes": ["major", "minor", "patch"]
+      "datasources": ["docker"],
+      "commitMessageTopic": "Docker image {{depName}}",
+      "commitMessageExtra": "to {{#if isSingleVersion}}{{{toVersion}}}{{else}}{{{newValue}}}{{/if}}",
+      "updateTypes": ["major", "minor", "patch"],
+      "enabled": true
     },
     {
       "matchDatasources": ["docker"],
@@ -92,6 +88,17 @@
       "matchUpdateTypes": ["patch"],
       "semanticCommitType": "fix",
       "labels": ["renovate/helm", "dep/patch"]
+    },
+    // auto-updates
+    {
+      "datasources": ["docker"],
+      "automerge": true,
+      "requiredStatusChecks": null,
+      "schedule": "after 1am and before 5am",
+      "updateTypes": ["minor", "patch"],
+      "packageNames": [
+        "homeassistant/home-assistant"
+      ]
     }
   ]
 }
