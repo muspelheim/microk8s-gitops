@@ -53,3 +53,11 @@ spec:
         enabled: true
         existingClaim: zigbee2mqtt-pvc
         mountPath: /data
+
+    probes:
+      liveness:
+        enabled: false
+      readiness:
+        enabled: false
+      startup:
+        enabled: false
