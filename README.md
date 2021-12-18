@@ -1,5 +1,6 @@
 # microk8s-gitops
 
+https://pre-commit.com/index.html
 
 export $(grep -v '^#' .env | xargs)
 
