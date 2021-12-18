@@ -18,4 +18,5 @@ spec:
     name: flux-system
   timeout: 20s
   url: ssh://git@github.com/muspelheim/microk8s-gitops
-
+  ignore: |
+    ./.pre-commit-config.yaml
