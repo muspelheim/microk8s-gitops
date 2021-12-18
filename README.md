@@ -4,7 +4,6 @@ https://pre-commit.com/index.html
 
 export $(grep -v '^#' .env | xargs)
 
-curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 
 flux create source helm k8s-at-home --url=https://k8s-at-home.com/charts/
 flux create source helm hashicorp --url=https://helm.releases.hashicorp.com
@@ -27,6 +26,19 @@ if [ -f ~/.helmrc ]; then
 fi
 
 export GITHUB_TOKEN=GHTOKEN
+
+flux create source git flux-system \
+--url=ssh://git@github.com/muspelheim/microk8s-gitops \
+--branch=main
+
+flux create kustomization my-secrets \
+--source=my-secrets \
+--path=./ \
+--prune=true \
+--interval=10m \
+--decryption-provider=sops \
+--decryption-secret=sops-gpg
+
 
 flux bootstrap github \
 --owner=muspelheim \

@@ -1,5 +1,5 @@
 .env
 *.decrypted.*
 secrets.yaml
-bin/
+setup/
 data/
