@@ -26,8 +26,10 @@ if [ -f ~/.helmrc ]; then
 . ~/.helmrc
 fi
 
+export GITHUB_TOKEN=GHTOKEN
+
 flux bootstrap github \
---owner=$GITHUB_USER \
+--owner=muspelheim \
 --repository=microk8s-gitops \
 --branch=main \
 --path=./ \
