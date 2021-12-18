@@ -12,8 +12,6 @@ spec:
   secretRef:
     name: flux-system
   url: ssh://git@github.com/muspelheim/microk8s-gitops
-  ignore: |
-    .pre-commit-config.yaml
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -27,12 +25,3 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-gpg
-  postBuild:
-    substitute: {}
-    substituteFrom:
-      - kind: Secret
-        name: cluster-secrets
