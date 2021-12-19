@@ -1,0 +1,28 @@
+---
+version: "3"
+
+tasks:
+  default:
+    cmds:
+      - echo {{.PROJECT_DIR}}
+      - task: start
+
+  start:
+    desc: Start AdGuard Standalone
+    cmds:
+      - docker-compose -f ./standalone/docker-compose.adguard.yml up -d
+    silent: false
+
+  stop:
+    desc: Stop AdGuard Standalone
+    cmds:
+      - docker-compose -f ./standalone/docker-compose.adguard.yml up -d
+    silent: false
+
+  upgrade:
+    desc: Upgrade AdGuard Standalone
+    cmds:
+      - docker-compose -f ./standalone/docker-compose.adguard.yml down
+      - docker-compose -f ./standalone/docker-compose.adguard.yml pull
+      - docker-compose -f ./standalone/docker-compose.adguard.yml up -d
+    silent: false

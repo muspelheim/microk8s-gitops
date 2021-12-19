@@ -7,3 +7,4 @@ vars:
 
 includes:
   flux: .taskfiles/flux.yml
+  adguard: .taskfiles/adguard.yml

@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  adguard:
+    container_name: adguard
+    image: adguard/adguardhome:latest
+    restart: unless-stopped
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "33443:443/tcp"
+      - "853:853/tcp"
+      - "784:784/udp"
+      - "3300:3000/tcp"
+      - "3380:3380/tcp"
+    volumes:
+      - './adguard/workdir:/opt/adguardhome/work'
+      - './adguard/confdir:/opt/adguardhome/conf'
+    cap_add:
+      - NET_ADMIN
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
