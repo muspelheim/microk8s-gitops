@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: homeassistant/home-assistant
-      tag: 2021.12.3
+      tag: 2021.11.5
     env:
       TZ: "Europe/Minsk"
     envFrom:
@@ -38,18 +38,13 @@ spec:
       auth:
         database: hassio
         username: hassio
+        #TODO: Move to secrets
         password: ${HASS_DB_PASSWORD}
         rootPassword: ${HASS_DB_ROOT_PASSWORD}
       primary:
         persistence:
           enabled: true
           existingClaim: hassdb-pvc
-#    service:
-#      main:
-#        type: LoadBalancer
-#        ports:
-#          http:
-#            port: 8124
     ingress:
       main:
         enabled: true

@@ -1,0 +1,9 @@
+---
+version: "3"
+
+vars:
+  PROJECT_DIR:
+    sh: "git rev-parse --show-toplevel"
+
+includes:
+  flux: .taskfiles/flux.yml
