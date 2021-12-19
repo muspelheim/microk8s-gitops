@@ -13,13 +13,13 @@ spec:
       version: 11.2.1
       sourceRef:
         kind: HelmRepository
-        name: k8s-at-home
+        name: k8s-at-home-charts
         namespace: flux-system
       interval: 60m
   values:
     image:
       repository: homeassistant/home-assistant
-      tag: 2021.12.3
+      tag: 2021.11.5
     env:
       TZ: "Europe/Minsk"
     envFrom:
@@ -33,12 +33,12 @@ spec:
         existingClaim: home-assistant-pvc
         mountPath: /config
     mariadb:
-      enabled: TRUE
+      enabled: true
       architecture: standalone
       auth:
         database: hassio
         username: hassio
-        #TODO: Move to secrets
+        # TODO: Move to secrets
         password: ${HASS_DB_PASSWORD}
         rootPassword: ${HASS_DB_ROOT_PASSWORD}
       primary:
@@ -51,13 +51,13 @@ spec:
         annotations:
           kubernetes.io/ingress.class: "nginx"
         hosts:
-        - host: ha.${SECRET_DOMAIN}
-          paths:
+          - host: ha.${SECRET_DOMAIN}
+            paths:
           - path: /
             pathType: Prefix
         tls:
-        - hosts:
-          - "ha.${SECRET_DOMAIN}"
+          - hosts:
+              - "ha.${SECRET_DOMAIN}"
     prometheus:
       serviceMonitor:
         enabled: false
