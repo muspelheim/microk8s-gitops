@@ -27,50 +27,7 @@ if [ -f ~/.helmrc ]; then
 . ~/.helmrc
 fi
 
-export GITHUB_TOKEN=GHTOKEN
-
-flux create source git flux-system \
---url=ssh://git@github.com/muspelheim/microk8s-gitops \
---branch=main
-
-flux create kustomization my-secrets \
---source=my-secrets \
---path=./ \
---prune=true \
---interval=10m \
---decryption-provider=sops \
---decryption-secret=sops-gpg
-
-
-flux bootstrap github \
---owner=muspelheim \
---repository=microk8s-gitops \
---branch=main \
---path=./ \
---personal
-
-
-flux create source git podinfo \
---url=https://github.com/stefanprodan/podinfo \
---branch=master \
---interval=30s \
---export > ./cluster/podinfo-source.yaml
-
-flux create kustomization podinfo \
---source=podinfo \
---path="./kustomize" \
---prune=true \
---validation=client \
---interval=5m \
---export > ./cluster/podinfo-kustomization.yaml
-
-
-helm template \
-cert-manager jetstack/cert-manager \
---namespace cert-manager \
---create-namespace \
---version v1.6.1 > cert-manager.custom.yaml
-
+kubectl apply --kustomize=./cluster/base/flux-system
 
 
 ## :open_file_folder:&nbsp; Repository structure
