@@ -10,3 +10,4 @@ resources:
   - minio-charts.yaml
   - prometheus-community-charts.yaml
   - traefik-charts.yaml
+  - hajimari-charts.yaml
