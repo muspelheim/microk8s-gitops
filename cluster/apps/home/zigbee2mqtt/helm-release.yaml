@@ -45,8 +45,9 @@ spec:
     ingress:
       main:
         enabled: false
+        ingressClassName: "traefik"
         annotations:
-          kubernetes.io/ingress.class: "traefik"
+          cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
           - host: z.${SECRET_DOMAIN}
             paths:

@@ -1,0 +1,48 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: authentik
+  namespace: networking
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://goauthentik.github.io/helm
+      chart: authentik
+      version: 4.0.3
+      sourceRef:
+        kind: HelmRepository
+        name: authentik-charts
+        namespace: flux-system
+      interval: 5m
+  dependsOn:
+    - name: traefik
+      namespace: networking
+  values:
+    image:
+      repository: goauthentik.io/server
+      tag: 2021.10.4
+    ingress:
+      enabled: true
+      ingressClassName: "traefik"
+      annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        cert-manager.io/cluster-issuer: letsencrypt-production
+      hosts:
+        - host: auth.${SECRET_DOMAIN}
+          paths:
+            - path: "/"
+              pathType: Prefix
+      tls:
+        - hosts:
+            - "auth.${SECRET_DOMAIN}"
+    authentik:
+      secret_key: "${AUTHENTIK_SECRET_KEY}"
+      postgresql:
+        password: "${AUTHENTIK_POSTGRESQL_PASSWORD}"
+    postgresql:
+      enabled: true
+      postgresqlPassword: "${AUTHENTIK_POSTGRESQL_PASSWORD}"
+    redis:
+      enabled: true
