@@ -13,3 +13,4 @@ resources:
   - hajimari-charts.yaml
   - jetstack-charts.yaml
   - authentik-charts.yaml
+  - appscode-charts.yaml
