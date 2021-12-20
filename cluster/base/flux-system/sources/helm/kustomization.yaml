@@ -12,3 +12,4 @@ resources:
   - traefik-charts.yaml
   - hajimari-charts.yaml
   - jetstack-charts.yaml
+  - authentik-charts.yaml
