@@ -4,6 +4,9 @@ kind: Certificate
 metadata:
   name: "letsencrypt-wildcard-production-tls"
   namespace: default
+  annotations:
+    # Sync wildcard certificate across namespaces
+    kubed.appscode.com/sync: "true"
 spec:
   secretName: "letsencrypt-wildcard-production-tls"
   issuerRef:
