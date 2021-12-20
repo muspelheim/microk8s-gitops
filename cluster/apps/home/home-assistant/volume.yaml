@@ -23,7 +23,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/home/${HOST_USERNAME}/microk8s-gitops/data/home-assistant"
+    path: "/home/samedi/microk8s-gitops/data/home-assistant"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -50,4 +50,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/home/${HOST_USERNAME}/microk8s-gitops/data/hassdb"
+    path: "/home/samedi/microk8s-gitops/data/hassdb"

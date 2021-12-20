@@ -23,4 +23,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/home/${HOST_USERNAME}/microk8s-gitops/data/zigbee2mqtt"
+    path: "/home/samedi/microk8s-gitops/data/zigbee2mqtt"
