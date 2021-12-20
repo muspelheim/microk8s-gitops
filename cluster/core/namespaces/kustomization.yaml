@@ -5,3 +5,4 @@ resources:
   - metallb-system.yaml
   - default.yaml
   - networking.yaml
+  - cert-manager.yaml

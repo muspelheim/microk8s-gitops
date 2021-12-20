@@ -13,3 +13,9 @@ tasks:
     cmds:
       - flux reconcile source git flux-system
     silent: true
+
+  reaply:
+    desc: Reapply flux2 configuration
+    cmds:
+      - kubectl apply --kustomize=./cluster/base/flux-system
+    silent: false
