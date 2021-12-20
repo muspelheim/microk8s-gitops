@@ -45,6 +45,16 @@ spec:
     ingress:
       main:
         enabled: false
+        annotations:
+          kubernetes.io/ingress.class: "traefik"
+        hosts:
+          - host: z.${SECRET_DOMAIN}
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - "z.${SECRET_DOMAIN}"
     persistence:
       config:
         enabled: true
