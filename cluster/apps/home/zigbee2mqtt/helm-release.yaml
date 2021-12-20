@@ -56,6 +56,7 @@ spec:
         tls:
           - hosts:
               - "z.${SECRET_DOMAIN}"
+            secretName: "letsencrypt-wildcard-production-tls"
     persistence:
       config:
         enabled: true
