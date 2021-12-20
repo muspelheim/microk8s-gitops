@@ -6,16 +6,10 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: "${SECRET_CLOUDFLARE_EMAIL}"
+    email: "${SECRET_LETSENCRYPT_EMAIL}"
     privateKeySecretRef:
       name: letsencrypt-production
     solvers:
-      - dns01:
-          cloudflare:
-            email: "${SECRET_CLOUDFLARE_EMAIL}"
-            apiKeySecretRef:
-              name: cloudflare-api-key
-              key: api-key
-        selector:
-          dnsZones:
-            - ${SECRET_DOMAIN}
+      - http01:
+          ingress:
+            class: traefik
