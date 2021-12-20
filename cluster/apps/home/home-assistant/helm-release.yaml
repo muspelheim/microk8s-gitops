@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: homeassistant/home-assistant
-      tag: 2021.12.3
+      tag: 2021.11.5
     env:
       TZ: "Europe/Minsk"
     envFrom:
@@ -36,11 +36,10 @@ spec:
       enabled: true
       architecture: standalone
       auth:
-        database: hassio
-        username: hassio
-        # TODO: Move to secrets
-        password: ${HASS_DB_PASSWORD}
-        rootPassword: ${HASS_DB_ROOT_PASSWORD}
+        database: ${SECRET_HASS_MYSQL_DATABASE}
+        username: ${SECRET_HASS_MYSQL_USER}
+        password: ${SECRET_HASS_MYSQL_PASSWORD}
+        rootPassword: ${SECRET_HASS_MYSQL_ROOT_PASSWORD}
       primary:
         persistence:
           enabled: true
