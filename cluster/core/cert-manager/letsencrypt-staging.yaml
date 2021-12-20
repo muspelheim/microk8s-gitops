@@ -10,6 +10,12 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-staging
     solvers:
-      - http01:
-          ingress:
-            class: traefik
+      - dns01:
+          cloudflare:
+            email: "${SECRET_LETSENCRYPT_EMAIL}"
+            apiKeySecretRef:
+              name: cloudflare-api-key
+              key: api-key
+        selector:
+          dnsZones:
+            - ${SECRET_DOMAIN}
