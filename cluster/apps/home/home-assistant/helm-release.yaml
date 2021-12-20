@@ -25,6 +25,8 @@ spec:
     envFrom:
       - secretRef:
           name: home-assistant-env
+      - secretRef:
+          name: cluster-secrets
     hostNetwork: true
     dnsPolicy: ClusterFirstWithHostNet
     persistence:
@@ -38,6 +40,7 @@ spec:
       auth:
         database: ${SECRET_HASS_MYSQL_DATABASE}
         username: ${SECRET_HASS_MYSQL_USER}
+        # TODO: Move to secrets
         password: ${SECRET_HASS_MYSQL_PASSWORD}
         rootPassword: ${SECRET_HASS_MYSQL_ROOT_PASSWORD}
       primary:
