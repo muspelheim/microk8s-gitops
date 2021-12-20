@@ -54,8 +54,8 @@ spec:
         hosts:
           - host: ha.${SECRET_DOMAIN}
             paths:
-          - path: /
-            pathType: Prefix
+              - path: /
+                pathType: Prefix
         tls:
           - hosts:
               - "ha.${SECRET_DOMAIN}"
