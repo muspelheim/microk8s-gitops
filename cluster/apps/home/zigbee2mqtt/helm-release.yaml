@@ -47,7 +47,9 @@ spec:
         enabled: false
         ingressClassName: "traefik"
         annotations:
-          cert-manager.io/cluster-issuer: letsencrypt-production
+          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+#        annotations:
+#          cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
           - host: z.${SECRET_DOMAIN}
             paths:
@@ -56,7 +58,6 @@ spec:
         tls:
           - hosts:
               - "z.${SECRET_DOMAIN}"
-            secretName: "letsencrypt-wildcard-production-tls"
     persistence:
       config:
         enabled: true
