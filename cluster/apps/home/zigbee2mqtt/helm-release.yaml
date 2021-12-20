@@ -33,10 +33,8 @@ spec:
       ZIGBEE2MQTT_CONFIG_advanced_last_seen: ISO_8601
       ZIGBEE2MQTT_CONFIG_advanced_rtscts: false
       ZIGBEE2MQTT_CONFIG_advanced_baudrate: 115200
-
     securityContext:
       privileged: true
-
     additionalVolumeMounts:
       - name: usb
         mountPath: /dev/ttyACM0
@@ -44,7 +42,6 @@ spec:
       - name: usb
         hostPath:
           path: /dev/ttyACM0
-
     ingress:
       main:
         enabled: false
@@ -53,7 +50,6 @@ spec:
         enabled: true
         existingClaim: zigbee2mqtt-pvc
         mountPath: /data
-
     probes:
       liveness:
         enabled: false
