@@ -59,7 +59,7 @@ spec:
         tls:
           - hosts:
               - "ha.${SECRET_DOMAIN}"
-#            secretName: "letsencrypt-wildcard-production-tls"
+            secretName: "letsencrypt-wildcard-production-tls"
     prometheus:
       serviceMonitor:
         enabled: false
