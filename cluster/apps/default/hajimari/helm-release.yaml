@@ -44,23 +44,19 @@ spec:
         ingressClassName: "traefik"
         annotations:
           cert-manager.io/cluster-issuer: letsencrypt-production
-          hajimari.io/enable: true
-          hajimari.io/icon: weather-sunset
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
         hosts:
-          - host: "z.${SECRET_DOMAIN}"
+          - host: "z.locallost.pro"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "z.${SECRET_DOMAIN}"
+              - "z.locallost.pro"
     persistence:
       data:
         enabled: true
-        existingClaim: hajimari-config
-    podAnnotations:
-      configmap.reloader.stakater.com/reload: "hajimari-settings"
+        existingClaim: hajimari-config-pvc
     resources:
       requests:
         cpu: 100m
