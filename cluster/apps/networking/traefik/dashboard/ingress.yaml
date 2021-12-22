@@ -12,8 +12,7 @@ spec:
   tls:
     - hosts:
         - "traefik.${SECRET_DOMAIN}"
-      # todo: move to secret
-      secretName: "letsencrypt-wildcard-production-tls"
+      secretName: "traefik-dashboard-tls"
   rules:
     - host: "traefik.${SECRET_DOMAIN}"
       http:
