@@ -2,10 +2,10 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: "letsencrypt-wildcard-production-tls"
+  name: "letsencrypt-wildcard-staging-tls"
   namespace: default
 #  annotations:
-#    # Sync wildcard certificate across namespaces
+    # Sync wildcard certificate across namespaces
 #    kubed.appscode.com/sync: "true"
 spec:
   secretName: "letsencrypt-wildcard-production-tls"
