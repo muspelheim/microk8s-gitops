@@ -18,4 +18,5 @@ spec:
               key: api-key
         selector:
           dnsZones:
-            - ${SECRET_DOMAIN}
+            - "${SECRET_DOMAIN}"
+            - "*.${SECRET_DOMAIN}"
