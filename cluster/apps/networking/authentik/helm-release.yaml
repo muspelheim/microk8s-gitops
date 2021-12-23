@@ -28,7 +28,7 @@ spec:
       ingressClassName: "traefik"
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
-        cert-manager.io/cluster-issuer: letsencrypt-production
+#        cert-manager.io/cluster-issuer: letsencrypt-production
       hosts:
         - host: auth.${SECRET_DOMAIN}
           paths:
@@ -37,7 +37,7 @@ spec:
       tls:
         - hosts:
             - "auth.${SECRET_DOMAIN}"
-          secretName: "letsencrypt-wildcard-production-tls"
+#          secretName: "letsencrypt-wildcard-production-tls"
     authentik:
       secret_key: "${AUTHENTIK_SECRET_KEY}"
       postgresql:
