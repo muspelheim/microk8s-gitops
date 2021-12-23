@@ -5,4 +5,5 @@ resources:
   - letsencrypt-production.yaml
   - letsencrypt-staging.yaml
   - cert-manager-secret.sops.yaml
+  - certificate-staging.yaml
 #  - certificate.yaml

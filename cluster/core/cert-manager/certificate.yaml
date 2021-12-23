@@ -14,4 +14,5 @@ spec:
     kind: ClusterIssuer
   dnsNames:
     - "${SECRET_DOMAIN}"
+    - "ha.${SECRET_DOMAIN}"
     - "*.${SECRET_DOMAIN}"

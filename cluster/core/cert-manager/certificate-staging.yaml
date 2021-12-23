@@ -8,10 +8,11 @@ metadata:
     # Sync wildcard certificate across namespaces
 #    kubed.appscode.com/sync: "true"
 spec:
-  secretName: "letsencrypt-wildcard-production-tls"
+  secretName: "letsencrypt-wildcard-staging-tls"
   issuerRef:
     name: "letsencrypt-staging"
     kind: ClusterIssuer
   dnsNames:
     - "${SECRET_DOMAIN}"
+    - "ha.${SECRET_DOMAIN}"
     - "*.${SECRET_DOMAIN}"
