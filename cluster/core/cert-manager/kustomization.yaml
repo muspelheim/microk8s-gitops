@@ -6,4 +6,3 @@ resources:
   - letsencrypt-staging.yaml
   - cert-manager-secret.sops.yaml
   - certificate-staging.yaml
-#  - certificate.yaml
