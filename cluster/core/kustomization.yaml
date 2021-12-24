@@ -4,4 +4,4 @@ resources:
   - cert-manager
   - metallb-system
   - namespaces
-#  - kubed
+  - kubed
