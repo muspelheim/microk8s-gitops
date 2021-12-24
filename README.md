@@ -4,28 +4,10 @@ https://pre-commit.com/index.html
 
 export $(grep -v '^#' .env | xargs)
 
-kubectl create namespace flux-system --dry-run=client -o yaml | kubectl apply -f -
-
-
 flux create source helm k8s-at-home --url=https://k8s-at-home.com/charts/
 flux create source helm hashicorp --url=https://helm.releases.hashicorp.com
 
 
-flux completion bash > ~/.fluxrc
-kustomize completion bash > ~/.kustomizerc
-helm completion > ~/.helmrc
-
-if [ -f ~/.kustomizerc ]; then
-. ~/.kustomizerc
-fi
-
-if [ -f ~/.fluxrc ]; then
-. ~/.fluxrc
-fi
-
-if [ -f ~/.helmrc ]; then
-. ~/.helmrc
-fi
 
 kubectl apply --kustomize=./cluster/base/flux-system
 

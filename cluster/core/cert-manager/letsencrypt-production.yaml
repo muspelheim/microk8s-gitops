@@ -17,6 +17,6 @@ spec:
               name: cloudflare-api-key
               key: api-key
         selector:
-          dnsNames:
+          dnsZones:
             - "${SECRET_DOMAIN}"
             - "*.${SECRET_DOMAIN}"

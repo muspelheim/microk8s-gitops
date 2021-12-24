@@ -5,14 +5,14 @@ metadata:
   name: traefik-dashboard
   namespace: networking
   annotations:
-    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+    cert-manager.io/cluster-issuer: "letsencrypt-production"
     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
 spec:
   ingressClassName: "traefik"
   tls:
     - hosts:
         - "traefik.${SECRET_DOMAIN}"
-      secretName: "letsencrypt-wildcard-staging-tls"
+      secretName: "traefik-dashboard-tls"
   rules:
     - host: "traefik.${SECRET_DOMAIN}"
       http:
