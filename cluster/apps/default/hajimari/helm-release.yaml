@@ -40,19 +40,20 @@ spec:
               url: "https://gmail.com"
     ingress:
       main:
-        enabled: false
+        enabled: true
         ingressClassName: "traefik"
         annotations:
 #          cert-manager.io/cluster-issuer: letsencrypt-production
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
         hosts:
-          - host: "z.locallost.pro"
+          - host: "z.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "z.locallost.pro"
+              - "z.${SECRET_DOMAIN}"
+            secretName: "${CLUSTER_DOMAIN_CERT}"
     persistence:
       data:
         enabled: true
