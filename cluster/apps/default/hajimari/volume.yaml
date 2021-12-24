@@ -7,7 +7,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: hajimari-storageclass
+  storageClassName: microk8s-hostpath
   resources:
     requests:
       storage: 5Gi
@@ -19,7 +19,7 @@ metadata:
   labels:
     type: local
 spec:
-  storageClassName: hajimari-storageclass
+  storageClassName: microk8s-hostpath
   capacity:
     storage: 5Gi
   accessModes:
