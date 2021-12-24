@@ -19,7 +19,7 @@ spec:
   values:
     image:
       repository: homeassistant/home-assistant
-      tag: 2021.12.5
+      tag: 2021.12.4
     env:
       TZ: "Europe/Minsk"
     envFrom:
@@ -50,7 +50,7 @@ spec:
         ingressClassName: "traefik"
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-#          cert-manager.io/cluster-issuer: letsencrypt-staging
+          cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
           - host: ha.${SECRET_DOMAIN}
             paths:
