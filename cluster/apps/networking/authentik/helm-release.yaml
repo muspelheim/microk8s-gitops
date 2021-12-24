@@ -36,6 +36,7 @@ spec:
       tls:
         - hosts:
             - "auth.${SECRET_DOMAIN}"
+          secretName: "${CLUSTER_DOMAIN_CERT}"
     authentik:
       secret_key: "${AUTHENTIK_SECRET_KEY}"
       postgresql:

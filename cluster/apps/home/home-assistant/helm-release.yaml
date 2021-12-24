@@ -50,7 +50,7 @@ spec:
         ingressClassName: "traefik"
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          cert-manager.io/cluster-issuer: letsencrypt-production
+#          cert-manager.io/cluster-issuer: letsencrypt-production
         hosts:
           - host: ha.${SECRET_DOMAIN}
             paths:
@@ -59,6 +59,7 @@ spec:
         tls:
           - hosts:
               - "ha.${SECRET_DOMAIN}"
+            secretName: "${CLUSTER_DOMAIN_CERT}"
     prometheus:
       serviceMonitor:
         enabled: false
