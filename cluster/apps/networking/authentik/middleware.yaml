@@ -8,8 +8,6 @@ spec:
     # TODO: use private domain (*.home.*)
     address: http://ak-outpost-authentik-embedded-outpost:9000/akprox/auth/traefik
     trustForwardHeader: true
-    # TODO: Added for test purposes
-    insecureSkipVerify: true
     authResponseHeaders:
       - X-authentik-username
       - X-authentik-groups
