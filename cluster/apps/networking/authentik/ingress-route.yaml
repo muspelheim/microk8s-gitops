@@ -1,0 +1,23 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  namespace: networking
+  name: traefik-sso
+spec:
+  routes:
+    - kind: Rule
+      match: "Host(`app.company`)"
+      middlewares:
+        - name: authentik
+          namespace: authentik
+      priority: 10
+      services: # Unchanged
+    # This part is only required for single-app setups
+    - kind: Rule
+      match: "Host(`app.company`) && PathPrefix(`/akprox/`)"
+      priority: 15
+      services:
+        - kind: Service
+          name: ak-outpost-authentik-embedded-outpost
+          port: 9000
