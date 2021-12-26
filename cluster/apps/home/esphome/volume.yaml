@@ -3,25 +3,24 @@ kind: PersistentVolumeClaim
 metadata:
   name: esphome-pvc
 spec:
-  resources:
-    requests:
-      storage: "1Gi"
+  storageClassName: esphome-storageclass
   accessModes:
     - ReadWriteOnce
-    - ReadOnlyMany
-  storageClassName: esphome-storageclass
+  resources:
+    requests:
+      storage: 1Gi
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: esphome-pv
+  name: esphome-volume
   labels:
     type: local
 spec:
   storageClassName: esphome-storageclass
   capacity:
-    storage: 5Gi
+    storage: 3Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/home/samedi/microk8s-gitops/data/esphome"
+    path: "/home/samedi/microk8s-gitops/data/esphomea"
