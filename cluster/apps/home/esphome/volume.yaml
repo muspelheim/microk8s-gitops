@@ -23,4 +23,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/home/samedi/microk8s-gitops/data/esphomea"
+    path: "/home/samedi/microk8s-gitops/data/esphome"
