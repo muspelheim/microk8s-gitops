@@ -3,7 +3,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   namespace: networking
-  name: traefik-sso
+  name: authentik
 spec:
   routes:
     - kind: Rule
