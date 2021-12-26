@@ -6,7 +6,7 @@ metadata:
 spec:
   forwardAuth:
     # TODO: use private domain (*.home.*)
-    address: http://authentik:9000/akprox/auth/traefik
+    address: http://ak-outpost-authentik-embedded-outpost:9000/akprox/auth/traefik
     trustForwardHeader: true
     authResponseHeaders:
       - X-authentik-username
