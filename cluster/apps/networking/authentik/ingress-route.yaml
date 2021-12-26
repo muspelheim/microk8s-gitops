@@ -6,13 +6,13 @@ metadata:
   name: authentik
 spec:
   routes:
-    - kind: Rule
-      match: "Host(`app.company`)"
-      middlewares:
-        - name: authentik
-          namespace: authentik
-      priority: 10
-      services: # Unchanged
+#    - kind: Rule
+#      match: "Host(`app.company`)"
+#      middlewares:
+#        - name: authentik
+#          namespace: authentik
+#      priority: 10
+#      services: # Unchanged
     # This part is only required for single-app setups
     - kind: Rule
       match: "Host(`app.company`) && PathPrefix(`/akprox/`)"
