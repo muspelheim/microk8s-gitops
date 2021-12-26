@@ -19,7 +19,5 @@ spec:
       priority: 15
       services:
         - kind: Service
-          # Or, to use an external Outpost, create an ExternalName service and reference that here.
-          # See https://kubernetes.io/docs/concepts/services-networking/service/#externalname
-          name: ak-outpost-example-outpost
+          name: ak-outpost-authentik-embedded-outpost
           port: 9000
