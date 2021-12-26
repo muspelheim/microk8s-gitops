@@ -6,6 +6,7 @@ spec:
   storageClassName: esphome-storageclass
   accessModes:
     - ReadWriteOnce
+    - ReadOnlyMany
   resources:
     requests:
       storage: 1Gi
@@ -22,5 +23,6 @@ spec:
     storage: 3Gi
   accessModes:
     - ReadWriteOnce
+    - ReadOnlyMany
   hostPath:
     path: "/home/samedi/microk8s-gitops/data/esphome"
