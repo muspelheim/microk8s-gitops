@@ -1,0 +1,65 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: esphome
+  namespace: home
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://k8s-at-home.com/charts/
+      chart: esphome
+      version: 8.1.0
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  # See https://github.com/k8s-at-home/charts/blob/master/charts/esphome/values.yaml
+  values:
+    image:
+      repository: ghcr.io/esphome/esphome
+      tag: 2021.12.2
+
+    persistence:
+      config:
+        enabled: true
+        existingClaim: esphome-pvc
+
+    env:
+      ESPHOME_DASHBOARD_USE_PING: "true"
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: networking-basic-auth@kubernetescrd
+        hosts:
+          - host: "esphome.${CLUSTER_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - "esphome.${CLUSTER_DOMAIN}"
+    addons:
+      codeserver:
+        image:
+          repository: ghcr.io/k8s-at-home/code-server
+          tag: v3.12.0
+        enabled: true
+        volumeMounts:
+          - name: config
+            mountPath: /config
+        ingress:
+          enabled: true
+          hosts:
+            - host: esphome-editor.${CLUSTER_DOMAIN}
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls:
+            - hosts:
+                - esphome-editor.${CLUSTER_DOMAIN}

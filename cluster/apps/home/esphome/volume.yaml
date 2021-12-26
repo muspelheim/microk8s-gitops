@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: esphome-pvc
+spec:
+  resources:
+    requests:
+      storage: "1Gi"
+  accessModes:
+    - ReadWriteOnce
+    - ReadOnlyMany
+  storageClassName: esphome-storageclass
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: esphome-pv
+  labels:
+    type: local
+spec:
+  storageClassName: esphome-storageclass
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/home/samedi/microk8s-gitops/data/esphome"
