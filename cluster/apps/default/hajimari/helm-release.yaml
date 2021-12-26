@@ -44,7 +44,7 @@ spec:
         ingressClassName: "traefik"
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          traefik.ingress.kubernetes.io/router.middlewares: traefik-sso@kubernetescrd
+          traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
         hosts:
           - host: "z.${SECRET_DOMAIN}"
             paths:

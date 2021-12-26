@@ -2,7 +2,6 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: authentik
-  namespace: networking
 spec:
   forwardAuth:
     # TODO: use private domain (*.home.*)
