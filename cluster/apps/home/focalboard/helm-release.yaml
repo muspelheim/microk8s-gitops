@@ -21,37 +21,12 @@ spec:
     image:
       repository: mattermost/focalboard
       pullPolicy: IfNotPresent
-      tag: 0.11.0
+      tag: 0.9.0
 
     persistence:
       config:
         enabled: true
         existingClaim: focalboard-pvc
-
-    # See the Administrator's Guide for config reference: https://www.focalboard.com/guide/admin/
-    config: |
-      {
-        "serverRoot": "http://localhost:8000",
-        "port": 8000,
-        "dbtype": "sqlite3",
-        "dbconfig": "/data/focalboard.db",
-        "postgres_dbconfig": "dbname=focalboard sslmode=disable",
-        "useSSL": false,
-        "webpath": "./pack",
-        "filespath": "/data/files",
-        "telemetry": true,
-        "session_expire_time": 2592000,
-        "session_refresh_time": 18000,
-        "localOnly": false,
-        "enableLocalMode": true,
-        "localModeSocketLocation": "/var/tmp/focalboard_local.socket"
-      }
-
-    service:
-      main:
-        ports:
-          http:
-            port: 8000
 
     ingress:
       main:
@@ -68,3 +43,31 @@ spec:
         tls:
           - hosts:
               - "board.${SECRET_DOMAIN}"
+
+    # See the Administrator's Guide for config reference: https://www.focalboard.com/guide/admin/
+    config: |
+      {
+        "serverRoot": "http://localhost:8000",
+        "port": 8000,
+        "dbtype": "sqlite3",
+        "dbconfig": "/data/focalboard.db",
+        "dbtableprefix": "",
+        "postgres_dbconfig": "dbname=focalboard sslmode=disable",
+        "test_dbconfig": "file::memory:?cache=shared",
+        "useSSL": false,
+        "webpath": "./pack",
+        "filesdriver": "local",
+        "filespath": "/data/files",
+        "telemetry": true,
+        "prometheus_address": ":9092",
+        "webhook_update": [],
+        "session_expire_time": 2592000,
+        "session_refresh_time": 18000,
+        "localOnly": false,
+        "enableLocalMode": true,
+        "localModeSocketLocation": "/var/tmp/focalboard_local.socket",
+        "authMode": "native",
+        "logging_cfg_file": "",
+        "audit_cfg_file": "",
+        "enablepublicsharedboards": true
+      }
