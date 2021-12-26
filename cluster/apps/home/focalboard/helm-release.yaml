@@ -38,7 +38,7 @@ spec:
         ingressClassName: "traefik"
         annotations:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: networking-basic-auth@kubernetescrd
+#          traefik.ingress.kubernetes.io/router.middlewares: networking-basic-auth@kubernetescrd
         hosts:
           - host: "board.${SECRET_DOMAIN}"
             paths:
@@ -62,7 +62,7 @@ spec:
         "webpath": "./pack",
         "filesdriver": "local",
         "filespath": "/data/files",
-        "telemetry": true,
+        "telemetry": false,
         "prometheus_address": ":9092",
         "webhook_update": [],
         "session_expire_time": 2592000,
