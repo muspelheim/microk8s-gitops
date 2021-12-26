@@ -7,21 +7,7 @@ metadata:
 spec:
   routes:
     - kind: Rule
-      match: "Host(`z.${SECRET_DOMAIN}`)"
-      priority: 15
-      services:
-        - kind: Service
-          name: ak-outpost-authentik-embedded-outpost
-          port: 9000
-    - kind: Rule
-      match: "Host(`ha.${SECRET_DOMAIN}`)"
-      priority: 15
-      services:
-        - kind: Service
-          name: ak-outpost-authentik-embedded-outpost
-          port: 9000
-    - kind: Rule
-      match: "Host(`traefik.${SECRET_DOMAIN}`)"
+      match: "Host(`https://traefik.${SECRET_DOMAIN}`) && PathPrefix(`/akprox/`)"
       priority: 15
       services:
         - kind: Service
