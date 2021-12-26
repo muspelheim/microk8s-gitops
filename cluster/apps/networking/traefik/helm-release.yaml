@@ -54,6 +54,7 @@ spec:
     additionalArguments:
       - "--providers.kubernetesingress.ingressendpoint.ip=192.168.0.170"
       - "--providers.kubernetescrd.allowexternalnameservices=true"
+      - "--providers.kubernetescrd.allowCrossNamespace=true"
       - "--providers.kubernetesingress.allowexternalnameservices=true"
     ports:
       traefik:

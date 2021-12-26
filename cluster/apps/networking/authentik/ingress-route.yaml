@@ -3,21 +3,23 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   namespace: networking
-  name: authentik
+  name: traefik-sso
 spec:
   routes:
-#    - kind: Rule
-#      match: "Host(`app.company`)"
-#      middlewares:
-#        - name: authentik
-#          namespace: authentik
-#      priority: 10
-##      services: # Unchanged
+    - kind: Rule
+      match: "Host(`app.company`)"
+      middlewares:
+        - name: authentik
+          namespace: authentik
+      priority: 10
+      services: # Unchanged
     # This part is only required for single-app setups
     - kind: Rule
-      match: "Host(`*.${SECRET_DOMAIN}`) && PathPrefix(`/akprox/`)"
+      match: "Host(`app.company`) && PathPrefix(`/akprox/`)"
       priority: 15
       services:
         - kind: Service
-          name: ak-outpost-authentik-embedded-outpost
+          # Or, to use an external Outpost, create an ExternalName service and reference that here.
+          # See https://kubernetes.io/docs/concepts/services-networking/service/#externalname
+          name: ak-outpost-example-outpost
           port: 9000
