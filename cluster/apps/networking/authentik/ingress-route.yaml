@@ -12,10 +12,10 @@ spec:
 #        - name: authentik
 #          namespace: authentik
 #      priority: 10
-#      services: # Unchanged
+##      services: # Unchanged
     # This part is only required for single-app setups
     - kind: Rule
-      match: "Host(`auth.${SECRET_DOMAIN}`) && PathPrefix(`/akprox/`)"
+      match: "Host(`*.${SECRET_DOMAIN}`) && PathPrefix(`/akprox/`)"
       priority: 15
       services:
         - kind: Service
