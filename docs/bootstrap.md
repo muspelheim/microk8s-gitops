@@ -1,5 +1,11 @@
 # Bootstrapping the cluster for GitOps management of deployments
 
+## Requirements
+```bash
+apache2-utils
+git
+```
+
 ## Enable Microk8s addons
 ```bash
 microk8s enable dns helm helm3 host-access storage

@@ -6,4 +6,4 @@ metadata:
   namespace: networking
 spec:
   basicAuth:
-    secret: basic-auth
+    secret: base-auth-global
