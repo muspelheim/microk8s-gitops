@@ -1,0 +1,23 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  namespace: networking
+  name: traefik-sso
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: "Host(`auth.${SECRET_DOMAIN}`)"
+      kind: Rule
+      services:
+        - name: traefik-sso
+          port: 4181
+      middlewares:
+        - name: traefik-sso@kubernetescrd
+  tls:
+    #    certsResolver
+    secretName: "${CLUSTER_DOMAIN_CERT}"
+    domains:
+      - main: "*.${SECRET_DOMAIN}"
+    options: {}
