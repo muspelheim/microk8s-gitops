@@ -28,6 +28,10 @@ spec:
         enabled: true
         existingClaim: focalboard-pvc
 
+    env:
+      - name: FOCALBOARD_PORT
+        value: "8000"
+
     ingress:
       main:
         enabled: true
