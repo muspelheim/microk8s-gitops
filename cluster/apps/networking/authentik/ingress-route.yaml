@@ -15,7 +15,7 @@ spec:
 #      services: # Unchanged
     # This part is only required for single-app setups
     - kind: Rule
-      match: "Host(`${SECRET_DOMAIN}`) && PathPrefix(`/akprox/`)"
+      match: "Host(`auth.${SECRET_DOMAIN}`) && PathPrefix(`/akprox/`)"
       priority: 15
       services:
         - kind: Service
