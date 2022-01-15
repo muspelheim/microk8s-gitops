@@ -75,4 +75,5 @@ kubectl apply -k ./cluster/crds/
  linkerd install | kubectl apply -f -
  linkerd upgrade | kubectl apply -f -
  linkerd viz install | kubectl apply -f -
+ linkerd jaeger install | kubectl apply -f -
 ```
