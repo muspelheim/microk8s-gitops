@@ -23,11 +23,11 @@ spec:
       targetPath: global.identityTrustAnchorsPEM
     - kind: Secret
       name: linkerd-identity-issuer
-      valuesKey: issuer.crt
+      valuesKey: tls.crt
       targetPath: identity.issuer.tls.crtPEM
     - kind: Secret
       name: linkerd-identity-issuer
-      valuesKey: issuer.key
+      valuesKey: tls.key
       targetPath: identity.issuer.tls.keyPEM
   values:
     installNamespace: false
