@@ -69,3 +69,10 @@ kubectl apply -f ./cluster/base/flux-system/gotk-sync.yaml
 ```bash
 kubectl apply -k ./cluster/crds/
 ```
+
+## Install Linkerd Control Plane
+```bash
+ linkerd install | kubectl apply -f -
+ linkerd upgrade | kubectl apply -f -
+ linkerd viz install | kubectl apply -f -
+```
