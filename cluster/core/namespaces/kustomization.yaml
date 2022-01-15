@@ -6,3 +6,4 @@ resources:
   - default.yaml
   - networking.yaml
   - cert-manager.yaml
+  - linkerd.yaml

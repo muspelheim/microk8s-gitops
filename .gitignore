@@ -4,3 +4,5 @@ secrets.yaml
 setup/
 data/
 standalone/adguard/
+*.key
+*.crt

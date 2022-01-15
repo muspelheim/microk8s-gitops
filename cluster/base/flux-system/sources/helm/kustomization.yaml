@@ -14,3 +14,4 @@ resources:
   - jetstack-charts.yaml
   - authelia-charts.yaml
   - appscode-charts.yaml
+  - linkerd-charts.yaml
