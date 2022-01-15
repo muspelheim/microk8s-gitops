@@ -18,19 +18,16 @@ spec:
         namespace: flux-system
   valuesFrom:
     - kind: Secret
-      name: linkerd-certs
+      name: linkerd-identity-issuer
       valuesKey: ca.crt
       targetPath: global.identityTrustAnchorsPEM
     - kind: Secret
-      name: linkerd-certs
+      name: linkerd-identity-issuer
       valuesKey: issuer.crt
       targetPath: identity.issuer.tls.crtPEM
     - kind: Secret
-      name: linkerd-certs
+      name: linkerd-identity-issuer
       valuesKey: issuer.key
       targetPath: identity.issuer.tls.keyPEM
   values:
     installNamespace: false
-    identity:
-      issuer:
-        crtExpiry: "2021-10-20T10:29:51Z"
