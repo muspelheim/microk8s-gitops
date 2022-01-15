@@ -31,3 +31,6 @@ spec:
       targetPath: identity.issuer.tls.keyPEM
   values:
     installNamespace: false
+    identity:
+      issuer:
+        crtExpiry: "2022-01-15T22:43:06Z"
