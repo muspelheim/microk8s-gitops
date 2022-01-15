@@ -14,7 +14,7 @@ spec:
       version: 2.9.4
       sourceRef:
         kind: HelmRepository
-        name: linkerd
+        name: linkerd-charts
   valuesFrom:
     - kind: Secret
       name: linkerd-certs
