@@ -10,13 +10,12 @@ spec:
     spec:
       # renovate: registryUrl=https://charts.authelia.com
       chart: authelia
-      version: 0.7.7
+      version: 0.7.6
       sourceRef:
         kind: HelmRepository
         name: authelia-charts
         namespace: flux-system
       interval: 5m
-
   values:
     domain: "${SECRET_DOMAIN}"
     ingress:
