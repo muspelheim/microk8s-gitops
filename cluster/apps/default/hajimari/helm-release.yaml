@@ -43,7 +43,6 @@ spec:
         enabled: false
         ingressClassName: "traefik"
         annotations:
-          linkerd.io/inject: enabled
           traefik.ingress.kubernetes.io/router.entrypoints: websecure
           #traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
         hosts:
