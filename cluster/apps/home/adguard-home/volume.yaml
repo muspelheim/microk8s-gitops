@@ -7,7 +7,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: adguard-home-config-storageclass
+  storageClassName: adguard-config-storageclass
   resources:
     requests:
       storage: 1Gi
@@ -20,7 +20,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: adguard-home-data-storageclass
+  storageClassName: adguard-data-storageclass
   resources:
     requests:
       storage: 2Gi
@@ -29,32 +29,32 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: adguard-home-config-volume
+  name: adguard-config-volume
   labels:
     type: local
 spec:
-  storageClassName: adguard-home-config-storageclass
+  storageClassName: adguard-config-storageclass
   capacity:
     storage: 3Gi
   accessModes:
     - ReadWriteOnce
     - ReadOnlyMany
   hostPath:
-    path: "/home/samedi/microk8s-gitops/data/adguard-home-config"
+    path: "/home/samedi/microk8s-gitops/data/adguard-config"
 
 ---
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: adguard-home-data-volume
+  name: adguard-data-volume
   labels:
     type: local
 spec:
-  storageClassName: adguard-home-data-storageclass
+  storageClassName: adguard-data-storageclass
   capacity:
     storage: 3Gi
   accessModes:
     - ReadWriteOnce
     - ReadOnlyMany
   hostPath:
-    path: "/home/samedi/microk8s-gitops/data/adguard-home-data"
+    path: "/home/samedi/microk8s-gitops/data/adguard-data"
