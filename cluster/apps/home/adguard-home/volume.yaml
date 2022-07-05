@@ -1,28 +1,60 @@
+---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: adguard-home-pvc
+  name: adguard-config-pvc
+  namespace: networking
 spec:
-  storageClassName: adguard-home-storageclass
   accessModes:
-    - ReadWriteOnce
-    - ReadOnlyMany
+    - ReadWriteMany
+  storageClassName: adguard-home-config-storageclass
   resources:
     requests:
       storage: 1Gi
 ---
 apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: adguard-data-pvc
+  namespace: networking
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: adguard-home-data-storageclass
+  resources:
+    requests:
+      storage: 2Gi
+
+---
+apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: adguard-home-volume
+  name: adguard-home-config-volume
   labels:
     type: local
 spec:
-  storageClassName: adguard-home-storageclass
+  storageClassName: adguard-home-config-storageclass
   capacity:
     storage: 3Gi
   accessModes:
     - ReadWriteOnce
     - ReadOnlyMany
   hostPath:
-    path: "/home/samedi/microk8s-gitops/data/adguard-home"
+    path: "/home/samedi/microk8s-gitops/data/adguard-home-config"
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: adguard-home-data-volume
+  labels:
+    type: local
+spec:
+  storageClassName: adguard-home-data-storageclass
+  capacity:
+    storage: 3Gi
+  accessModes:
+    - ReadWriteOnce
+    - ReadOnlyMany
+  hostPath:
+    path: "/home/samedi/microk8s-gitops/data/adguard-home-data"
