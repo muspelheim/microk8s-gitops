@@ -27,24 +27,27 @@ spec:
       main:
         ports:
           http:
-            port: 3000
-      dns:
-        enabled: true
-        type: LoadBalancer
-        loadBalancerIP: ${ADGUARD_LB}
-        externalTrafficPolicy: Local
-        ports:
-          tcp:
-            enabled: true
-            port: 53
-            protocol: TCP
-            targetPort: 53
-          udp:
-            enabled: true
-            port: 53
-            protocol: UDP
-            targetPort: 53
-
+            port: 3080
+    dns-tcp:
+      enabled: true
+      type: NodePort
+      ports:
+        dns-tcp:
+          enabled: true
+          port: 53
+          protocol: TCP
+          targetPort: 53
+      externalTrafficPolicy: Local
+    dns-udp:
+      enabled: true
+      type: NodePort
+      ports:
+        dns-udp:
+          enabled: true
+          port: 53
+          protocol: UDP
+          targetPort: 53
+      externalTrafficPolicy: Local
     persistence:
       config:
         enabled: true
@@ -60,7 +63,7 @@ spec:
         existingClaim: adguard-data-pvc
     config: |
       bind_host: 0.0.0.0
-      bind_port: 3380
+      bind_port: 3080
       beta_bind_port: 0
       users: []
       auth_attempts: 5
