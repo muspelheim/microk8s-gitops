@@ -6,6 +6,7 @@ apache2-utils
 git
 wget
 curl
+samba
 ```
 
 ## Install packages
