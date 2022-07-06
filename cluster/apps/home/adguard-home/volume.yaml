@@ -21,7 +21,7 @@ spec:
   storageClassName: adguard-data-storageclass
   resources:
     requests:
-      storage: 2Gi
+      storage: 3Gi
 
 ---
 apiVersion: v1
@@ -33,7 +33,7 @@ metadata:
 spec:
   storageClassName: adguard-config-storageclass
   capacity:
-    storage: 3Gi
+    storage: 1Gi
   accessModes:
     - ReadWriteOnce
     - ReadOnlyMany
