@@ -7,22 +7,10 @@ spec:
   storageClassName: adguard-config-storageclass
   accessModes:
     - ReadWriteMany
+    - ReadOnlyMany
   resources:
     requests:
       storage: 1Gi
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: adguard-data-pvc
-spec:
-  accessModes:
-    - ReadWriteMany
-  storageClassName: adguard-data-storageclass
-  resources:
-    requests:
-      storage: 3Gi
-
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -35,11 +23,23 @@ spec:
   capacity:
     storage: 1Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
     - ReadOnlyMany
   hostPath:
     path: "/home/samedi/microk8s-gitops/data/adguard-config"
-
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: adguard-data-pvc
+spec:
+  storageClassName: adguard-data-storageclass
+  accessModes:
+    - ReadWriteMany
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 3Gi
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -52,7 +52,7 @@ spec:
   capacity:
     storage: 3Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
     - ReadOnlyMany
   hostPath:
     path: "/home/samedi/microk8s-gitops/data/adguard-data"
