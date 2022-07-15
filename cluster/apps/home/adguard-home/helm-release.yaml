@@ -39,8 +39,7 @@ spec:
           port: 53
           protocol: TCP
           targetPort: 53
-          nodePort: 53
-      externalTrafficPolicy: Local
+      externalTrafficPolicy: "Local"
     dns-udp:
       enabled: true
       type: NodePort
@@ -50,8 +49,7 @@ spec:
           port: 53
           protocol: UDP
           targetPort: 53
-          nodePort: 53
-      externalTrafficPolicy: Local
+      externalTrafficPolicy: "Local"
     persistence:
       config:
         enabled: true
