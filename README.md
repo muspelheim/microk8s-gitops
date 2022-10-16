@@ -22,18 +22,32 @@ The Git repository contains the following directories under `cluster` and are or
 - **apps** directory (depends on **core**) is where your common applications (grouped by namespace) could be placed, Flux will prune resources here if they are not tracked by Git anymore
 
 ```
-cluster
-├── apps
-│   ├── default
-│   ├── networking
-│   └── system-upgrade
-├── base
-│   └── flux-system
-├── core
-│   ├── cert-manager
-│   ├── metallb-system
-│   ├── namespaces
-│   └── system-upgrade
-└── crds
-    └── cert-manager
+.
+├── cluster
+│   ├── apps
+│   │   ├── default
+│   │   │   └── hajimari
+│   │   ├── home
+│   │   │   ├── adguard-home
+│   │   │   ├── esphome
+│   │   │   ├── focalboard
+│   │   │   ├── home-assistant
+│   │   │   ├── mosquitto
+│   │   │   └── zigbee2mqtt
+│   │   └── networking
+│   │       ├── authelia
+│   │       ├── linkerd
+│   │       └── traefik
+│   ├── base
+│   │   └── flux-system
+│   ├── core
+│   │   ├── cert-manager
+│   │   ├── kubed
+│   │   ├── metallb-system
+│   │   └── namespaces
+│   └── crds
+│       ├── cert-manager
+│       └── traefik
+└── standalone
+    └── adguard
 ```
