@@ -1,16 +1,7 @@
-# microk8s-gitops
+# GitOps for HomeAssistant
 
-https://pre-commit.com/index.html
-
-export $(grep -v '^#' .env | xargs)
-
-flux create source helm k8s-at-home --url=https://k8s-at-home.com/charts/
-flux create source helm hashicorp --url=https://helm.releases.hashicorp.com
-
-
-
-kubectl apply --kustomize=./cluster/base/flux-system
-
+This is a GitOps repository for HomeAssistant. It uses [flux2](https://github.com/fluxcd/flux2)
+to manage the kubernetes cluster ([MicroK8S](https://microk8s.io/)) for HomeAssistant and other services.
 
 ## :open_file_folder:&nbsp; Repository structure
 
@@ -51,3 +42,18 @@ The Git repository contains the following directories under `cluster` and are or
 └── standalone
     └── adguard
 ```
+
+## :gear:&nbsp; Hardware
+
+Dell Optiplex 7090 Micro as a core server with the following specs:
+* Intel Core i5-10500T
+* 32GB RAM
+* 512 NVMe SSD
+* 1TB SSD
+* Zigbee USB stick (CC2538)
+
+x3 Raspberry Pi 3B+ as edge devices with the following specs:
+* 1GB RAM
+* 32GB SD Card
+
+Bunch of Zigbee and BLE devices.
