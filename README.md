@@ -8,7 +8,6 @@
 [![update-flux](https://github.com/angelnu/k8s-gitops/workflows/update-flux/badge.svg)](https://github.com/angelnu/k8s-gitop/workflows/flux-update-schedule/actions)
 <br />
 
-
 This is a GitOps repository for HomeAssistant. It uses [flux2](https://github.com/fluxcd/flux2)
 to manage the kubernetes cluster ([MicroK8S](https://microk8s.io/)) for HomeAssistant and other services.
 
