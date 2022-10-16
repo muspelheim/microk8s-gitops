@@ -8,23 +8,35 @@ on:
 
 jobs:
   update-helm-release-annotations:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
       - uses: k8s-at-home/renovate-helm-releases@v1
         with:
           cluster-path: "./"
-      - uses: peter-evans/create-pull-request@v4
+          # Folders to exclude such as those use includes (Example: Ansible Vault)
+          exclude-folders: './ansible'
+          # Turn on debug logging
+          debug: 'yes'
+          # Do not alter Helm Release files
+          dry-run: 'no'
+          # Tolerate yaml files with errors instead of aborting on errors
+          tolerate-yaml-errors: 'no'
+
+      - name: Create pull request for HelmRelease annotations
+        uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: renovate-annotations
+          branch: helm-release-annotations
           delete-branch: true
-          title: "Update renovate annotations"
+          title: "[Renovate] create helmrelease annotations"
           signoff: true
           committer: "Yauheni <muspelheim@users.noreply.github.com>"
           author: "Yauheni <muspelheim@users.noreply.github.com>"
           assignees: "muspelheim"
-          commit-message: "Update renovate annotations"
+          commit-message: "Create RenovateBot helmrelease annotations"
           body: |
             Update Helm Releases in order for Renovate to pick up new versions of Helm charts
           labels: renovate/annotations
