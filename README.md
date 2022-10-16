@@ -9,6 +9,8 @@
 <br />
 Leverage Flux2 to automate cluster state using code residing in this repo.
 
+---
+
 ## :open_file_folder:&nbsp; Repository structure
 
 The Git repository contains the following directories under `cluster` and are ordered below by how Flux will apply them.
@@ -49,6 +51,8 @@ The Git repository contains the following directories under `cluster` and are or
     └── adguard
 ```
 
+---
+
 ## :gear:&nbsp; Hardware
 
 Dell Optiplex 7090 Micro as a core server with the following specs:
@@ -63,3 +67,23 @@ x3 Raspberry Pi 3B+ as edge devices with the following specs:
 * 32GB SD Card
 
 Bunch of Zigbee and BLE devices.
+
+---
+
+## :wrench:&nbsp; Tools
+
+Below are some of the tools I find useful
+
+| Tool                                                   | Purpose                                               |
+|--------------------------------------------------------|-------------------------------------------------------|
+| [sops](https://github.com/mozilla/sops)                | Simple and flexible tool for managing secrets         |
+| [pre-commit](https://github.com/pre-commit/pre-commit) | Ensure the YAML and shell script in my repo are consistent |
+| [task](https://taskfile.dev/)                          | Task is a task runner / build tool|                  |
+
+---
+
+## :handshake:&nbsp; Thanks
+
+A lot of inspiration for my cluster came from the people that have shared their clusters over at [awesome-home-kubernetes](https://github.com/k8s-at-home/awesome-home-kubernetes)
+
+---
