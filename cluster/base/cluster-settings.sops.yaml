@@ -5,7 +5,7 @@ metadata:
     namespace: flux-system
 data:
     HOST_USERNAME: ENC[AES256_GCM,data:0RwuC0p2,iv:dTJpNGsENOO6/hBYoWWkq/a4E1AEHXqmTouARjbnA6k=,tag:T5HnUl7QoM7RqBJugAJGcg==,type:str]
-    METALLB_LB_RANGE: ENC[AES256_GCM,data:xQ1S2VNrb7Wo/iexERMcPbQixPFYxZlXouSN,iv:VRjr05zmfsUQiFsKg14aHTzewidzL9L/0s7VHvKm2jo=,tag:BrFBoouShqPDucleS+MsbQ==,type:str]
+    METALLB_LB_RANGE: ENC[AES256_GCM,data:YHhFG7oPADMjIG0GUAK7tw==,iv:xj13K9QBS5Gfqch9B9AQ052Wmt3O+/tbpdmrpTi0Vdc=,tag:RYHkmOK0zKTNzdLheuAo4g==,type:str]
     METALLB_TRAEFIK_ADDR: ENC[AES256_GCM,data:BOQDRP3g72Tk7/T3qg==,iv:2DuHxO9SqpZz1F4i1TvPYaWWNqd1matK3bSs5sxyF7o=,tag:vyY5SGUKL4iOZurMfsmuJw==,type:str]
     SVC_TRAEFIK_ADDR: ENC[AES256_GCM,data:PVtHrJW9GR1/0meFxw==,iv:m534FnNXI4HoQ/h1OOYH6tlN/GNbE/kfkrPl0YWKiW4=,tag:bHh7ydAajn8HvT49AkJ02A==,type:str]
 sops:
@@ -14,8 +14,8 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2021-12-20T03:55:56Z"
-    mac: ENC[AES256_GCM,data:9rzZe00zqSY6mdmLEBmwJbBMjAufMHyLqFjVGh+8OPZDAW6pP+vDXZTTHpT0K5PB39D4We7cH7/T/hjRr2lvwYu9v4E/CqTlt3cTjJ0jCbj/tX+z4MY8zIhP7PUKQ2cXcepexeKA6LtqNwFk+hU7Srb+q2E+XSYiaOO+lwxCNsI=,iv:VL09Y99I7R1O8ecomvl1JndACNV65cJph4yPDWXFZBs=,tag:+M2C+wAVj2BCgzwgMwda1Q==,type:str]
+    lastmodified: "2022-10-26T23:29:08Z"
+    mac: ENC[AES256_GCM,data:otpIYx9t7BIGOFebvtZcqr0DzlikWJMsGU63S/IxdofgaIyPG892ffGo6/RZxzVJCXSsd1W+2ednnJKa/5qs3kQBCEctiZhBvCh9yvszgovaNVrn/49QocRFKnz3o8fiidxlIaRYmVYXhVpfFv0dg/M2gbY4MW0K0FSRVKayIsA=,iv:5HsEgq679vPBLor+4nm4m08MC/4MJZBvoJOLuD3s7ak=,tag:7phgbB3THb5QhksIhey+7g==,type:str]
     pgp:
         - created_at: "2021-12-20T03:55:54Z"
           enc: |
