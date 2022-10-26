@@ -8,9 +8,9 @@ spec:
   interval: 5m
   chart:
     spec:
-      # renovate: registryUrl=https://metallb.github.io/metallb
+      # renovate-ignore: registryUrl=https://metallb.github.io/metallb
       chart: metallb
-      version: 0.13.7
+      version: 0.13.2
       sourceRef:
         kind: HelmRepository
         name: metallb-charts
