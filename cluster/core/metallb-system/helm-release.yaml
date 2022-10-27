@@ -15,11 +15,6 @@ spec:
         kind: HelmRepository
         name: metallb-charts
         namespace: flux-system
-# ONLY FOR CHART <v0.12.1
-#  values:
-#    configInline:
-#      address-pools:
-#        - name: default
-#          protocol: layer2
-#          addresses:
-#            - "${METALLB_LB_RANGE}"
+  values:
+    crds:
+      enabled: true
