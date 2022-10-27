@@ -39,6 +39,10 @@ spec:
     name: flux-system
   path: ./cluster/core/metallb-system
   prune: true
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -56,3 +60,7 @@ spec:
   prune: true
   dependsOn:
     - name: metallb-system-metallb
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg
