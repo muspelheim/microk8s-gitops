@@ -3,4 +3,3 @@ kind: Kustomization
 namespace: metallb-system
 resources:
   - helm-release.yaml
-  - crds.yaml

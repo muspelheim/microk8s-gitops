@@ -2,6 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - cert-manager
-  - metallb-system
+# cluster/base/core.yaml:36
+#  - metallb-system
   - namespaces
   - kubed

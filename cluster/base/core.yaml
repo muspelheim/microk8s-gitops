@@ -24,3 +24,35 @@ spec:
         name: cluster-settings
       - kind: Secret
         name: cluster-secrets
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: kube-system-metallb
+  namespace: flux-system
+  labels:
+    component.kutara.io/part-of: definitions
+spec:
+  interval: 10m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./cluster/core/metallb-system
+  prune: true
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: kube-system-metallb-scr1
+  namespace: flux-system
+  labels:
+    component.kutara.io/part-of: definitions
+spec:
+  interval: 10m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./cluster/core/metallb-system/crds
+  prune: true
+  dependsOn:
+    - name: kube-system-metallb
