@@ -9,7 +9,8 @@ resources:
   - metrics-server-charts.yaml
   - minio-charts.yaml
   - prometheus-community-charts.yaml
-  - traefik-charts.yaml
+#  - traefik-charts.yaml
+  - ingress-nginx-charts.yaml
   - hajimari-charts.yaml
   - jetstack-charts.yaml
   - authelia-charts.yaml
