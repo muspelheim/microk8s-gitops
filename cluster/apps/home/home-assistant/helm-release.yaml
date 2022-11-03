@@ -47,9 +47,7 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: "traefik"
-        annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        ingressClassName: "ingress-nginx"
         hosts:
           - host: "ha.${SECRET_DOMAIN}"
             paths:
