@@ -41,18 +41,18 @@ spec:
     ingress:
       main:
         enabled: false
-        ingressClassName: "traefik"
+        ingressClassName: "nginx"
         annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: websecure
-          #traefik.ingress.kubernetes.io/router.middlewares: networking-authentik@kubernetescrd
+          nginx.ingress.kubernetes.io/auth-type: basic
+          nginx.ingress.kubernetes.io/auth-secret: base-auth-global
         hosts:
-          - host: "z.${SECRET_DOMAIN}"
+          - host: "h.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "z.${SECRET_DOMAIN}"
+              - "h.${SECRET_DOMAIN}"
             secretName: "${CLUSTER_DOMAIN_CERT}"
     persistence:
       data:

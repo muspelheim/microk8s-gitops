@@ -35,10 +35,10 @@ spec:
     ingress:
       main:
         enabled: true
-        ingressClassName: "traefik"
+        ingressClassName: "nginx"
         annotations:
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-#          traefik.ingress.kubernetes.io/router.middlewares: networking-basic-auth@kubernetescrd
+          nginx.ingress.kubernetes.io/auth-type: basic
+          nginx.ingress.kubernetes.io/auth-secret: base-auth-global
         hosts:
           - host: "board.${SECRET_DOMAIN}"
             paths:

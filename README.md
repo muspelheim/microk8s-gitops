@@ -35,8 +35,7 @@ The Git repository contains the following directories under `cluster` and are or
 │   │   │   └── zigbee2mqtt
 │   │   └── networking
 │   │       ├── authelia
-│   │       ├── linkerd
-│   │       └── traefik
+│   │       └── linkerd
 │   ├── base
 │   │   └── flux-system
 │   ├── core
@@ -45,8 +44,8 @@ The Git repository contains the following directories under `cluster` and are or
 │   │   ├── metallb-system
 │   │   └── namespaces
 │   └── crds
-│       ├── cert-manager
-│       └── traefik
+│       └── cert-manager
+│       └── metallb
 └── standalone
     └── adguard
 ```

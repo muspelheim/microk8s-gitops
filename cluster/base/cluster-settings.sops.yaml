@@ -6,16 +6,14 @@ metadata:
 data:
     HOST_USERNAME: ENC[AES256_GCM,data:0RwuC0p2,iv:dTJpNGsENOO6/hBYoWWkq/a4E1AEHXqmTouARjbnA6k=,tag:T5HnUl7QoM7RqBJugAJGcg==,type:str]
     METALLB_LB_RANGE: ENC[AES256_GCM,data:YHhFG7oPADMjIG0GUAK7tw==,iv:xj13K9QBS5Gfqch9B9AQ052Wmt3O+/tbpdmrpTi0Vdc=,tag:RYHkmOK0zKTNzdLheuAo4g==,type:str]
-    METALLB_TRAEFIK_ADDR: ENC[AES256_GCM,data:BOQDRP3g72Tk7/T3qg==,iv:2DuHxO9SqpZz1F4i1TvPYaWWNqd1matK3bSs5sxyF7o=,tag:vyY5SGUKL4iOZurMfsmuJw==,type:str]
-    SVC_TRAEFIK_ADDR: ENC[AES256_GCM,data:PVtHrJW9GR1/0meFxw==,iv:m534FnNXI4HoQ/h1OOYH6tlN/GNbE/kfkrPl0YWKiW4=,tag:bHh7ydAajn8HvT49AkJ02A==,type:str]
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2022-10-26T23:29:08Z"
-    mac: ENC[AES256_GCM,data:otpIYx9t7BIGOFebvtZcqr0DzlikWJMsGU63S/IxdofgaIyPG892ffGo6/RZxzVJCXSsd1W+2ednnJKa/5qs3kQBCEctiZhBvCh9yvszgovaNVrn/49QocRFKnz3o8fiidxlIaRYmVYXhVpfFv0dg/M2gbY4MW0K0FSRVKayIsA=,iv:5HsEgq679vPBLor+4nm4m08MC/4MJZBvoJOLuD3s7ak=,tag:7phgbB3THb5QhksIhey+7g==,type:str]
+    lastmodified: "2022-11-10T03:51:05Z"
+    mac: ENC[AES256_GCM,data:FuQiidDTGDABNh4EAoTXHXxwhTxa2RZHhJu6GC/nbVxMZGK2OA/5tN1pc3MsTH5QJVfIitBfS4VInxtE6FaTFW2/tgx2HF/0iIXm3o1orM1VFLHvWtfmqfBEqxggjHNZ8MZRxWv+oXboMZrIAHF/9U7fmAEv3bgRXlJojQKh6Xk=,iv:L8TYC1khtbq6CEKKNnnhSlS8VGWWLIm1Wv+ZW+01vZ0=,tag:v38rxF7WoHmar8R5Y8cAJg==,type:str]
     pgp:
         - created_at: "2021-12-20T03:55:54Z"
           enc: |
