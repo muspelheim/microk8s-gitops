@@ -38,7 +38,7 @@ spec:
       kind: DaemonSet
       env:
         - name: TZ
-          value: Europe/Paris
+          value: Europe/Minsk
       extraVolumeMounts:
         - name: config-custom
           mountPath: /config
