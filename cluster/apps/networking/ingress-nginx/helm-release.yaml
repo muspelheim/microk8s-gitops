@@ -4,6 +4,8 @@ kind: HelmRelease
 metadata:
   name: ingress-nginx
   namespace: networking
+  annotations:
+    linkerd.io/inject: disabled
 spec:
   interval: 15m
   chart:
