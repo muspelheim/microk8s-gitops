@@ -7,5 +7,5 @@ resources:
   - mosquitto
   - home-assistant
   - esphome
-  - adguard-home
+#  - adguard-home
 #  - focalboard #temporary disabled (useless)
