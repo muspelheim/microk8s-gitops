@@ -21,7 +21,7 @@ spec:
     image:
       repository: mattermost/focalboard
       pullPolicy: IfNotPresent
-      tag: 7.5.2
+      tag: 7.11.0
 
     persistence:
       config:
