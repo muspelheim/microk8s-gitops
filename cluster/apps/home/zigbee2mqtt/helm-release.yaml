@@ -19,13 +19,13 @@ spec:
   values:
     image:
       repository: ghcr.io/koenkk/zigbee2mqtt
-      tag: 1.34.0
+      tag: 1.28.4
     env:
       TZ: "Europe/Minsk"
       ZIGBEE2MQTT_DATA: /data
       ZIGBEE2MQTT_CONFIG_MQTT_BASE_TOPIC: zigbee2mqtt
       ZIGBEE2MQTT_CONFIG_MQTT_SERVER: mqtt://mosquitto
-      ZIGBEE2MQTT_CONFIG_SERIAL_PORT: /dev/ttyACM0
+      ZIGBEE2MQTT_CONFIG_SERIAL_PORT: /dev/ttyUSB0
       ZIGBEE2MQTT_CONFIG_HOMEASSISTANT: true
       ZIGBEE2MQTT_CONFIG_PERMIT_JOIN: false
       ZIGBEE2MQTT_CONFIG_FRONTEND_PORT: 8080
@@ -38,10 +38,15 @@ spec:
     additionalVolumeMounts:
       - name: usb
         mountPath: /dev/ttyACM0
+      - name: usb2
+        mountPath: /dev/ttyUSB0
     additionalVolumes:
       - name: usb
         hostPath:
           path: /dev/ttyACM0
+      - name: usb2
+        hostPath:
+          path: /dev/ttyUSB0
     ingress:
       main:
         enabled: true
