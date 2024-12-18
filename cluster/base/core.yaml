@@ -1,5 +1,5 @@
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: core
@@ -25,7 +25,7 @@ spec:
       - kind: Secret
         name: cluster-secrets
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: metallb-system-metallb
@@ -51,7 +51,7 @@ spec:
       - kind: Secret
         name: cluster-secrets
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: metallb-system-metallb-crds
